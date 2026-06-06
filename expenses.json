@@ -1,3 +1,16 @@
-{
-    
-}
+[
+    {
+        "id": 1,
+        "amount": "833",
+        "category": "food",
+        "date": "3993",
+        "description": "burger"
+    },
+    {
+        "id": 2,
+        "amount": "3999",
+        "category": "clothing",
+        "date": "-399",
+        "description": "shirt"
+    }
+]

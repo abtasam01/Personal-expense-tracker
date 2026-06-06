@@ -1,16 +1,26 @@
-import json 
+from storage import Storage
+
 
 class ExpenseManager:
     def __init__(self):
-        self.expenses = []
-
-    def load_expenses(self):
-        try:
-            with open('expenses.json', 'r') as f:
-                return json.load(f)
-        except: 
-            return {}
+        self.storage = Storage()
     
-    def save_expenses(self, expenses):
-        with open('expenses.json', 'w') as f:
-            json.dump(expenses, f)
+    def add_expense(self):
+        id = len(self.storage.expenses) + 1
+        amount = input("Enter the Amount: ")
+        category = input("Enter the Category: ")
+        date = input("Enter the Date: ")
+        description = input("Enter the Description: ")
+        expense = {
+            "id": id,
+            "amount": amount,
+            "category": category,
+            "date": date,
+            "description": description
+        }
+        self.storage.expenses.append(expense)
+        self.storage.save_expenses(self.storage.expenses) 
+
+    
+
+    
