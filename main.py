@@ -25,7 +25,7 @@ def main():
                 em.add_expense()
                 print("Expense added successfully")
             case 2:
-                pass
+                em.view_all_expenses()
             case 3:
                 print("Search Expenses")
             case 4:
