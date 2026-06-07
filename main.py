@@ -4,7 +4,6 @@ from expense_manager import ExpenseManager
 
 em = ExpenseManager()
 
-
 def main():
     print("==== Personal Expense Tracker ====\n")
     print("1. Add Expense")
@@ -27,9 +26,11 @@ def main():
             case 2:
                 em.view_all_expenses()
             case 3:
-                print("Search Expenses")
+                search = int(input("Enter the ID to search the expense you want: "))
+                em.search_expenses(search)
             case 4:
-                print("Edit Expenses")
+                search = int(input("Enter the ID to edit the expense you want: "))
+                em.edit_expense(search)
             case 5:
                 print("Delete Expenses")
             case 6:
@@ -49,3 +50,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

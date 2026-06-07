@@ -1,10 +1,10 @@
 [
     {
         "id": 1,
-        "amount": "833",
-        "category": "food",
-        "date": "3993",
-        "description": "burger"
+        "amount": 888888.384,
+        "category": "gym",
+        "date": "08-12-2026",
+        "description": "gym clothing"
     },
     {
         "id": 2,

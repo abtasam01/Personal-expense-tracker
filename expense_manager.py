@@ -1,13 +1,15 @@
+from random import choice
 from storage import Storage
 
 
 class ExpenseManager:
     def __init__(self):
         self.storage = Storage()
+
     
     def add_expense(self):
         id = len(self.storage.expenses) + 1
-        amount = input("Enter the Amount: ")
+        amount = float(input("Enter the Amount: "))
         category = input("Enter the Category: ")
         date = input("Enter the Date: ")
         description = input("Enter the Description: ")
@@ -21,14 +23,80 @@ class ExpenseManager:
         self.storage.expenses.append(expense)
         self.storage.save_expenses(self.storage.expenses) 
 
+
     def view_all_expenses(self):
-        print("====All Expenses====")
-        for expense in self.storage.expenses:
-            print(f"ID: {expense['id']}")
-            print(f"Amount: {expense['amount']}")
-            print(f"Category: {expense['category']}")
-            print(f"Date: {expense['date']}")
-            print(f"Description: {expense['description']}")
-            print("-" * 20)
+        expenses = self.storage.expenses
+        if not expenses:
+            print("No expenses found.")
+            return
+
+        headers = ("ID", "Amount", "Category", "Date", "Description")
+        rows = [
+            (
+                str(expense["id"]),
+                str(expense["amount"]),
+                str(expense["category"]),
+                str(expense["date"]),
+                str(expense["description"]),
+            )
+            for expense in expenses
+        ]
+
+        widths = [
+            max(len(headers[i]), max((len(row[i]) for row in rows), default=0))
+            for i in range(len(headers))
+        ]
+
+        def format_row(cells):
+            return " | ".join(cells[i].ljust(widths[i]) for i in range(len(cells)))
+
+        print("\n==== All Expenses ====\n")
+        print(format_row(headers))
+        print("-+-".join("-" * w for w in widths))
+        for row in rows:
+            print(format_row(row))
+        print()
+
+
+    def search_id(self, id: int)->bool:
+        existing_data = self.storage.expenses
+        if id not in [expense["id"] for expense in existing_data]:
+            return False
+        else:
+            return True 
+
+
+    def search_expenses(self, id: int):
+        if self.search_id(id):
+            expense = next((expense for expense in self.storage.expenses if expense["id"] == id), None)
+            print(expense)
+        else:
+            print("Expense not found.")
+
+
+    def edit_expense(self, id: int):
+        if self.search_id(id):
+            expense = next((expense for expense in self.storage.expenses if expense["id"] == id), None)
+            print(expense)
+            amount = float(input("Enter the Amount: "))
+            category = input("Enter the Category: ")
+            date = input("Enter the Date: ")
+            description = input("Enter the Description: ")
+            expense["amount"] = amount
+            expense["category"] = category
+            expense["date"] = date
+            expense["description"] = description
+            self.storage.save_expenses(self.storage.expenses)
+            print("Expense updated successfully")
+        else:
+            print("Expense not found.")
+            
+    
+
+        
+            
+               
+
+
 
     
