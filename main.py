@@ -22,7 +22,6 @@ def main():
             case 1:
                 print("Adding Expense...")
                 em.add_expense()
-                print("Expense added successfully")
             case 2:
                 em.view_all_expenses()
             case 3:
@@ -32,7 +31,8 @@ def main():
                 search = int(input("Enter the ID to edit the expense you want: "))
                 em.edit_expense(search)
             case 5:
-                print("Delete Expenses")
+                search = int(input("Enter the ID to delete the expense you want: "))
+                em.delete_expense(search)
             case 6:
                 print("Monthly Summary")
             case 7:

@@ -1,16 +1,9 @@
 [
     {
-        "id": 1,
-        "amount": 888888.384,
-        "category": "gym",
-        "date": "08-12-2026",
-        "description": "gym clothing"
-    },
-    {
         "id": 2,
-        "amount": "3999",
-        "category": "clothing",
-        "date": "-399",
-        "description": "shirt"
+        "amount": 200.0,
+        "category": "food",
+        "date": "2002-12-24",
+        "description": "helllo"
     }
 ]

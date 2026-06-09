@@ -1,5 +1,6 @@
 from random import choice
 from storage import Storage
+from datetime import datetime
 
 
 class ExpenseManager:
@@ -11,7 +12,12 @@ class ExpenseManager:
         id = len(self.storage.expenses) + 1
         amount = float(input("Enter the Amount: "))
         category = input("Enter the Category: ")
-        date = input("Enter the Date: ")
+        date = input("Enter the Date (YYYY-MM-DD): ")
+        try:
+            datetime.strptime(date, "%Y-%m-%d")
+        except ValueError:
+            print("Invalid date format. Please use YYYY-MM-DD format.")
+            return
         description = input("Enter the Description: ")
         expense = {
             "id": id,
@@ -22,6 +28,7 @@ class ExpenseManager:
         }
         self.storage.expenses.append(expense)
         self.storage.save_expenses(self.storage.expenses) 
+        print("Expense has added successfully.")
 
 
     def view_all_expenses(self):
@@ -80,7 +87,13 @@ class ExpenseManager:
             print(expense)
             amount = float(input("Enter the Amount: "))
             category = input("Enter the Category: ")
-            date = input("Enter the Date: ")
+            date = input("Enter the Date (YYYY-MM-DD): ")
+            try:
+                datetime.strptime(date, "%Y-%m-%d")
+            except ValueError:
+                print("Invalid date format. Please use YYYY-MM-DD format.")
+                return
+            date = datetime.strptime(date, "%Y-%m-%d").date()
             description = input("Enter the Description: ")
             expense["amount"] = amount
             expense["category"] = category
@@ -88,6 +101,16 @@ class ExpenseManager:
             expense["description"] = description
             self.storage.save_expenses(self.storage.expenses)
             print("Expense updated successfully")
+        else:
+            print("Expense not found.")
+
+    
+    def delete_expense(self, id: int):
+        if self.search_id(id):
+            expense = next((expense for expense in self.storage.expenses if expense["id"] == id), None)
+            self.storage.expenses.remove(expense)
+            self.storage.save_expenses(self.storage.expenses)
+            print("Expense deleted successfully")
         else:
             print("Expense not found.")
             
