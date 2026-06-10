@@ -12,12 +12,14 @@ class ExpenseManager:
         id = len(self.storage.expenses) + 1
         amount = float(input("Enter the Amount: "))
         category = input("Enter the Category: ")
-        date = input("Enter the Date (YYYY-MM-DD): ")
-        try:
-            datetime.strptime(date, "%Y-%m-%d")
-        except ValueError:
-            print("Invalid date format. Please use YYYY-MM-DD format.")
-            return
+        while True:
+            date = input("Enter the Date (YYYY-MM-DD): ")
+            try:
+                datetime.strptime(date, "%Y-%m-%d")
+                break
+            except ValueError:
+                print("Invalid date format. Please use YYYY-MM-DD format.")
+
         description = input("Enter the Description: ")
         expense = {
             "id": id,
@@ -85,15 +87,17 @@ class ExpenseManager:
         if self.search_id(id):
             expense = next((expense for expense in self.storage.expenses if expense["id"] == id), None)
             print(expense)
+            print("Editing Expense...")
             amount = float(input("Enter the Amount: "))
             category = input("Enter the Category: ")
-            date = input("Enter the Date (YYYY-MM-DD): ")
-            try:
-                datetime.strptime(date, "%Y-%m-%d")
-            except ValueError:
-                print("Invalid date format. Please use YYYY-MM-DD format.")
-                return
-            date = datetime.strptime(date, "%Y-%m-%d").date()
+            while True:
+                date = input("Enter the Date (YYYY-MM-DD): ")
+                try:
+                    datetime.strptime(date, "%Y-%m-%d")
+                    break
+                except ValueError:
+                    print("Invalid date format. Please use YYYY-MM-DD format.")
+                    
             description = input("Enter the Description: ")
             expense["amount"] = amount
             expense["category"] = category
@@ -113,6 +117,47 @@ class ExpenseManager:
             print("Expense deleted successfully")
         else:
             print("Expense not found.")
+
+    
+    def monthly_summary(self):
+        expenses = self.storage.expenses
+
+        if not expenses:
+            print("No expenses found.")
+            return
+
+        year = int(input("Enter year (YYYY): "))
+        month = int(input("Enter month (1-12): "))
+
+        total = 0
+        category_summary = {}
+
+        for expense in expenses:
+            expense_date = datetime.strptime(expense["date"], "%Y-%m-%d")
+
+            if expense_date.year == year and expense_date.month == month:
+                total += expense["amount"]
+
+                category = expense["category"]
+                category_summary[category] = (
+                    category_summary.get(category, 0) + expense["amount"]
+                )
+
+        if total == 0:
+            print(f"No expenses found for {year}-{month:02d}")
+            return
+
+        print(f"\n===== Monthly Summary ({year}-{month:02d}) =====")
+
+        for category, amount in category_summary.items():
+            print(f"{category.capitalize():15} ₹{amount:.2f}")
+
+        print("-" * 30)
+        print(f"Total Expenses: ₹{total:.2f}")
+
+
+    
+
             
     
 

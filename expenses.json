@@ -1,9 +1,107 @@
 [
     {
-        "id": 2,
+        "id": 1,
         "amount": 200.0,
         "category": "food",
-        "date": "2002-12-24",
-        "description": "helllo"
+        "date": "2026-06-01",
+        "description": "Lunch at restaurant"
+    },
+    {
+        "id": 2,
+        "amount": 450.0,
+        "category": "transport",
+        "date": "2026-06-02",
+        "description": "Fuel refill"
+    },
+    {
+        "id": 3,
+        "amount": 1200.0,
+        "category": "shopping",
+        "date": "2026-06-03",
+        "description": "Bought a shirt"
+    },
+    {
+        "id": 4,
+        "amount": 150.0,
+        "category": "food",
+        "date": "2026-06-04",
+        "description": "Evening snacks"
+    },
+    {
+        "id": 5,
+        "amount": 800.0,
+        "category": "utilities",
+        "date": "2026-06-05",
+        "description": "Electricity bill"
+    },
+    {
+        "id": 6,
+        "amount": 300.0,
+        "category": "transport",
+        "date": "2026-06-06",
+        "description": "Auto fare"
+    },
+    {
+        "id": 7,
+        "amount": 2500.0,
+        "category": "rent",
+        "date": "2026-06-07",
+        "description": "Room rent payment"
+    },
+    {
+        "id": 8,
+        "amount": 600.0,
+        "category": "entertainment",
+        "date": "2026-06-08",
+        "description": "Movie tickets"
+    },
+    {
+        "id": 9,
+        "amount": 180.0,
+        "category": "food",
+        "date": "2026-06-09",
+        "description": "Breakfast"
+    },
+    {
+        "id": 10,
+        "amount": 950.0,
+        "category": "shopping",
+        "date": "2026-06-10",
+        "description": "Bought headphones"
+    },
+    {
+        "id": 11,
+        "amount": 400.0,
+        "category": "transport",
+        "date": "2026-06-11",
+        "description": "Train ticket"
+    },
+    {
+        "id": 12,
+        "amount": 220.0,
+        "category": "food",
+        "date": "2026-06-12",
+        "description": "Dinner"
+    },
+    {
+        "id": 13,
+        "amount": 1500.0,
+        "category": "health",
+        "date": "2026-06-13",
+        "description": "Medical checkup"
+    },
+    {
+        "id": 14,
+        "amount": 700.0,
+        "category": "utilities",
+        "date": "2026-06-14",
+        "description": "Internet bill"
+    },
+    {
+        "id": 15,
+        "amount": 350.0,
+        "category": "entertainment",
+        "date": "2026-06-15",
+        "description": "Gaming subscription"
     }
 ]

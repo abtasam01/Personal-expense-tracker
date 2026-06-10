@@ -34,9 +34,9 @@ def main():
                 search = int(input("Enter the ID to delete the expense you want: "))
                 em.delete_expense(search)
             case 6:
-                print("Monthly Summary")
+                em.monthly_summary()
             case 7:
-                print("Category Summary")
+                em.category_summary()
             case 8:
                 print("Highest Expense")
             case 9:
