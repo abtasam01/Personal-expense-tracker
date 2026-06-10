@@ -195,8 +195,13 @@ class ExpenseManager:
             return
 
         highest_expense = max(expenses, key=lambda x: x["amount"])
-        print(f"Highest Expense: {highest_expense}")
         
+        print("\n===== Highest Expense =====")
+        print(f"ID          : {highest_expense['id']}")
+        print(f"Amount      : ₹{highest_expense['amount']}")
+        print(f"Category    : {highest_expense['category']}")
+        print(f"Date        : {highest_expense['date']}")
+        print(f"Description : {highest_expense['description']}")
         
 
     
