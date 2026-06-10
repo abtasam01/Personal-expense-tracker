@@ -156,7 +156,25 @@ class ExpenseManager:
         print(f"Total Expenses: ₹{total:.2f}")
 
 
-    
+    def category_summary(self):
+        expenses = self.storage.expenses
+        if not expenses:
+            print("No expenses found.")
+            return
+        category_summary = {}
+
+        for expense in expenses:
+            category = expense["category"]
+            category_summary[category] = (
+                category_summary.get(category, 0) + expense["amount"]
+            )
+
+        print("\n===== Category Summary =====")
+        for category, amount in category_summary.items():
+            print(f"{category.capitalize():15} ₹{amount:.2f}")
+
+        print("-" * 30)
+        print(f"Total Expenses: ₹{sum(category_summary.values()):.2f}")
 
             
     
