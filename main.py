@@ -40,7 +40,7 @@ def main():
             case 8:
                 em.highest_expense()
             case 9:
-                print("Lowest Expense")
+                em.lowest_expense()
             case 10:
                 print("Exit")
                 break

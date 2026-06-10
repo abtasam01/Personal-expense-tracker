@@ -195,13 +195,29 @@ class ExpenseManager:
             return
 
         highest_expense = max(expenses, key=lambda x: x["amount"])
-        
+
         print("\n===== Highest Expense =====")
         print(f"ID          : {highest_expense['id']}")
         print(f"Amount      : ₹{highest_expense['amount']}")
         print(f"Category    : {highest_expense['category']}")
         print(f"Date        : {highest_expense['date']}")
         print(f"Description : {highest_expense['description']}")
+
+
+    def lowest_expense(self):
+        expenses = self.storage.expenses
+        if not expenses:
+            print("No expenses found")
+            return
+
+        lowest_expense = min(expenses, key=lambda x: x["amount"])
+
+        print("\n===== Lowest Expense =====")
+        print(f"ID          : {lowest_expense['id']}")
+        print(f"Amount      : ₹{lowest_expense['amount']}")
+        print(f"Category    : {lowest_expense['category']}")
+        print(f"Date        : {lowest_expense['date']}")
+        print(f"Description : {lowest_expense['description']}")
         
 
     
