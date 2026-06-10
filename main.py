@@ -38,7 +38,7 @@ def main():
             case 7:
                 em.category_summary()
             case 8:
-                print("Highest Expense")
+                em.highest_expense()
             case 9:
                 print("Lowest Expense")
             case 10:
